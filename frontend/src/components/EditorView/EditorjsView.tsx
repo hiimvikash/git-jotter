@@ -11,6 +11,7 @@ import Table from '@editorjs/table';
 import CodeTool from '@editorjs/code';
 import ChangeCase from 'editorjs-change-case';
 import ToggleBlock from 'editorjs-toggle-block';
+import NestedList from '@editorjs/nested-list';
 
 function Editorjs({ content }: { content: any }) {
   const ejInstance = useRef<EditorJS | null>(null);
@@ -37,7 +38,15 @@ function Editorjs({ content }: { content: any }) {
             anchorLength: 200,
           },
         },
-        list: List,
+        liste: List,
+        list: {
+          class: NestedList,
+          inlineToolbar: true,
+          config: {
+            defaultStyle: 'unordered'
+          },
+        },
+        
         delimiter: Delimiter,
         alert: Alert,
         checklist: {
