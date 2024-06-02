@@ -1,0 +1,44 @@
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL") // will be used by CLI like "migrate", backend will not use this URL
+}
+
+model User {
+  id  Int    @id @default(autoincrement())
+  name    String? @default("anonymus")
+  username String @unique
+  password String
+  blogs    Blog[]
+
+  comments Comment[]
+}
+
+model Blog {
+  id  Int    @id @default(autoincrement())
+  authorId   Int
+  content    Json
+  title      String
+  createdAt DateTime @default(now()) @db.Date
+
+  author    User @relation(fields: [authorId], references: [id])
+  comments Comment[]
+  
+}
+
+model Comment {
+  id     Int @id @default(autoincrement())
+  comment    String
+  commentorId Int
+  commentorUsername String
+  blogId Int
+  createdAt DateTime @default(now()) @db.Date
+
+  user    User @relation(fields: [commentorId], references: [id])
+  blog    Blog @relation(fields: [blogId], references: [id])
+}

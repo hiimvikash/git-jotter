@@ -1,0 +1,1 @@
+export const BACKEND_URL = "https://jotterapi.imvikashguptacse.workers.dev/api/v1"
