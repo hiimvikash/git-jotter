@@ -1,11 +1,4 @@
-declare module '@editorjs/list' {
-    import { BlockTool } from '@editorjs/editorjs'
-  
-    export default class List implements BlockTool {
-      save(block: HTMLDivElement)
-      render(): HTMLElement
-    }
-  }
+
 declare module '@editorjs/paragraph' {
     import { BlockTool } from '@editorjs/editorjs'
   
@@ -80,6 +73,14 @@ declare module 'editorjs-toggle-block' {
     }
   }
 declare module 'editorjs-change-case' {
+    import { BlockTool } from '@editorjs/editorjs'
+  
+    export default class List implements BlockTool {
+      save(block: HTMLDivElement)
+      render(): HTMLElement
+    }
+  }
+declare module '@editorjs/nested-list' {
     import { BlockTool } from '@editorjs/editorjs'
   
     export default class List implements BlockTool {

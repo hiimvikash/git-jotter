@@ -3,7 +3,6 @@ import EditorJS, { OutputData } from '@editorjs/editorjs';
 import "./ejs.css"
 
 import Header from "@editorjs/header";
-import List from "@editorjs/list";
 import Delimiter from "@editorjs/delimiter";
 import Alert from 'editorjs-alert';
 import Checklist from '@editorjs/checklist'
@@ -11,6 +10,7 @@ import Table from '@editorjs/table'
 import CodeTool from '@editorjs/code';
 import ChangeCase from 'editorjs-change-case';
 import ToggleBlock from 'editorjs-toggle-block';
+import NestedList from '@editorjs/nested-list';
 
 interface EditorProps {
   onChange: (data: OutputData) => void;
@@ -46,7 +46,13 @@ function Editorjs({ onChange }: EditorProps) {
             anchorLength: 200,
           },
         },
-        list: List,
+        list: {
+          class: NestedList,
+          inlineToolbar: true,
+          config: {
+            defaultStyle: 'unordered'
+          },
+        },
         delimiter: Delimiter,
         alert: Alert,
         checklist: {
