@@ -102,8 +102,8 @@ const DropD: React.FC<DropdownProps> = ({ label, items }) => {
                         Write 
                     </Link>
 
-                    <Link to={`/myblogs`} className=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left">
-                        My Blogs
+                    <Link to={`/myjotters`} className=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left">
+                        My Jotters
                     </Link>
 
                     <button

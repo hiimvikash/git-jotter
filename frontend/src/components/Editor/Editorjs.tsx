@@ -32,7 +32,7 @@ function Editorjs({ onChange }: EditorProps) {
       },
       data: JSON.parse(localStorage.getItem('editorData') || '{}') || {},
       onChange: async () => {
-        const editorData = await editor.save();
+        const editorData = await editor.saver.save();
         console.log(editorData);
         onChange(editorData);
       },
@@ -71,7 +71,10 @@ function Editorjs({ onChange }: EditorProps) {
   }, [onChange]);
 
   useEffect(() => {
-    initEditor();
+    if(ejInstance.current === null){
+      initEditor();
+  }
+
 
     return () => {
       if (ejInstance.current) {
@@ -79,7 +82,7 @@ function Editorjs({ onChange }: EditorProps) {
         ejInstance.current = null;
       }
     };
-  }, [initEditor]);
+  },[]);
 
   return (
     <div>
