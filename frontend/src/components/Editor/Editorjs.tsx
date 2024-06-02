@@ -84,9 +84,9 @@ function Editorjs({onChange}:EditorProps) {
 
     
   return (
-    <>
+    <div>
     <div id = "editorjs" className='pt-6'></div>
-    </>
+    </div>
   )
 }
 
