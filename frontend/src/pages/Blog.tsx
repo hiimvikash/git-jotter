@@ -85,6 +85,7 @@ function Blog() {
       navigate("/myjotters");
     } catch (error) {
       setDloading(false);
+      
       console.log("error while deleting blog")
     }
   }
