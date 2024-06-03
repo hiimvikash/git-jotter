@@ -17,7 +17,7 @@ function Write() {
         setEditorData(data);
         localStorage.setItem("editorData", JSON.stringify(data));
     };
-    const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleTitleChange = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
         setTitle(e.target.value);
         localStorage.setItem("editorTitle", e.target.value);
     };
@@ -86,8 +86,11 @@ function Write() {
     <>
     <NavBar/>
     <div className=" p-10  min-h-[92vh]">
-        <div>
+        {/* <div>
             <input type="text" value={title} onChange={handleTitleChange} placeholder="Untitled" className=" h-full text-center w-[100%] md:text-5xl sm:text-4xl text-3xl border-gray-300 outline-none bg-transparent font-[600] placeholder-gray-300 text-gray-800" />
+        </div> */}
+        <div>
+            <textarea  rows={3} value={title} placeholder="Untitled" onChange={(e:React.ChangeEvent<HTMLTextAreaElement>)=>handleTitleChange(e)} className="h-full text-center w-[100%] md:text-5xl sm:text-4xl text-3xl border-gray-300 outline-none bg-transparent font-[600] placeholder-gray-300 text-gray-800"/>
         </div>
 
         <div className="rounded-xl shadow-lg  mt-5 md:px-3 px-10">

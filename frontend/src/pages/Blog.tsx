@@ -89,13 +89,16 @@ function Blog() {
         <>
           <NavBar />
           <div className=" p-10  min-h-[92vh]">
-            <div>
+            {/* <div>
               <input
                 type="text"
                 disabled
                 value={blog.title}
                 className=" h-full text-center w-[100%] md:text-5xl sm:text-4xl text-3xl border-gray-300 outline-none bg-transparent font-[600] placeholder-gray-300 text-gray-800"
               />
+            </div> */}
+            <div>
+            <textarea disabled  rows={3} value={blog.title} className="h-full text-center w-[100%] md:text-5xl sm:text-4xl text-3xl border-gray-300 outline-none bg-transparent font-[600] placeholder-gray-300 text-gray-800"/>
             </div>
 
             <div className="flex items-center justify-center gap-2 mt-[10px]">
