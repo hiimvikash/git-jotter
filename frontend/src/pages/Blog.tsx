@@ -74,7 +74,7 @@ function Blog() {
       }
       )
       setDloading(false);
-      navigate("/");
+      navigate("/myjotters");
     } catch (error) {
       setDloading(false);
       console.log("error while deleting blog")

@@ -1,6 +1,7 @@
 import { MdDelete } from "react-icons/md";
 
-function DeleteBtns({ onClick, loading }: any) {
+function DeleteBtns({ onClick, dloading }: any) {
+
   return (
     <div className="m-10 mt-20">
       <div
@@ -23,7 +24,7 @@ function DeleteBtns({ onClick, loading }: any) {
         </div>
       </div>
       <div>
-        {!loading ? (<button
+        {!dloading ? (<button
           onClick={onClick}
           className=" flex gap-1 bg-red-800 hover:bg-red-900 text-red-100  items-center py-2.5 px-4 text-xs font-medium text-center rounded-lg"
         >
