@@ -47,7 +47,7 @@ function Write() {
         setLoading(true);
         if(!title || editorData.blocks.length === 0){
             setTimeout(()=>{
-                alert("Empty blog cannot be uploaded.");
+                alert("Empty jotter cannot be uploaded.");
                 setLoading(false);
             },1000)
             return;
