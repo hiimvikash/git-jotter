@@ -1,8 +1,6 @@
 import { MdDelete } from "react-icons/md";
 
 function DeleteBtns({ onClick, loading }: any) {
-  console.log("delete exec", loading);
-
   return (
     <div className="m-10 mt-20">
       <div
