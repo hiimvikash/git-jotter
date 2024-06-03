@@ -64,8 +64,8 @@ function Blog() {
 
   const [dloading, setDloading] = useState(false);
   async function handleDeleteBlog() {
-    setDloading(true);
     try {
+      setDloading(true);
       await axios.delete(`${BACKEND_URL}/blog/${id}`,
       {
         headers: {
