@@ -32,9 +32,9 @@ function Write() {
         if(!verified){
             navigate("/signin");
         }
-        const savedData = localStorage.getItem('editorData');
-        const savedTitle = localStorage.getItem('editorTitle');
-        if (savedData && savedTitle) {
+        const savedData = localStorage.getItem('editorData') || "{}"; 
+        const savedTitle = localStorage.getItem('editorTitle') || "";
+        if (savedData || savedTitle) {
           setEditorData(JSON.parse(savedData));
           setTitle(savedTitle);
         }
