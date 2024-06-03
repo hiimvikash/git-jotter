@@ -85,7 +85,7 @@ function Blog() {
       navigate("/myjotters");
     } catch (error) {
       setDloading(false);
-      
+
       console.log("error while deleting blog")
     }
   }
@@ -111,14 +111,6 @@ function Blog() {
         <>
           <NavBar />
           <div className=" p-10  min-h-[92vh]">
-            {/* <div>
-              <input
-                type="text"
-                disabled
-                value={blog.title}
-                className=" h-full text-center w-[100%] md:text-5xl sm:text-4xl text-3xl border-gray-300 outline-none bg-transparent font-[600] placeholder-gray-300 text-gray-800"
-              />
-            </div> */}
             <div>
             <textarea disabled  rows={3} value={blog.title} className="h-full text-center w-[100%] md:text-5xl sm:text-4xl text-3xl border-gray-300 outline-none bg-transparent font-[600] placeholder-gray-300 text-gray-800"/>
             </div>
@@ -140,7 +132,7 @@ function Blog() {
               <Editorjs content={blog.content} />
             </div>
           </div>
-            {blog.authorId === userId && <EditBtns onClick={handleEditBlog} />}
+          {blog.authorId === userId && <EditBtns onClick={handleEditBlog} />}
           
 
           {/* comment section */}
