@@ -62,7 +62,9 @@ function Blog() {
     }
   }
 
+  const [dloading, setDloading] = useState(false);
   async function handleDeleteBlog() {
+    setDloading(true);
     try {
       await axios.delete(`${BACKEND_URL}/blog/${id}`,
       {
@@ -71,8 +73,10 @@ function Blog() {
         }
       }
       )
+      setDloading(false);
       navigate("/");
     } catch (error) {
+      setDloading(false);
       console.log("error while deleting blog")
     }
   }
@@ -160,7 +164,7 @@ function Blog() {
             )}
           </div>
 
-        {blog.authorId === userId && <DeleteBtns onClick={handleDeleteBlog}/>}
+        {blog.authorId === userId && <DeleteBtns onClick={handleDeleteBlog} loading = {dloading}/>}
           
         </>
       );
