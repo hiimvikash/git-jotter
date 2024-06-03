@@ -13,6 +13,7 @@ import { MdDelete } from "react-icons/md";
 import CommentForm from "../components/CommentForm";
 import { LoginToAddComment } from "../components/Alert";
 import DeleteBtns from "../components/DeleteBtns";
+import EditBtns from "../components/EditBtns";
 
 
 
@@ -24,6 +25,7 @@ function Blog() {
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [reverseComment, setReverseComment] = useState([]);
+  
 
   const userId = useRecoilValue(userIdAtom);
 
@@ -41,11 +43,13 @@ function Blog() {
     }
     setLoading(false);
   }
-
   useEffect(()=>{
     setMounted(true);
     fetchBlog();
   }, [])
+
+
+
 
   async function handleDeleteComment(commentId:number) {
     try {
@@ -61,6 +65,10 @@ function Blog() {
       console.log("error while deleting")
     }
   }
+
+
+
+
 
   const [dloading, setDloading] = useState(false);
   async function handleDeleteBlog() {
@@ -81,6 +89,15 @@ function Blog() {
     }
   }
 
+
+
+
+
+  function handleEditBlog(){
+    localStorage.setItem("editContent", JSON.stringify(blog.content));
+    localStorage.setItem("editTitle", blog.title);
+    navigate(`/jotter/${blog.id}/edit`);
+  }
 
   if(mounted){
     if(loading){
@@ -104,6 +121,7 @@ function Blog() {
             <div>
             <textarea disabled  rows={3} value={blog.title} className="h-full text-center w-[100%] md:text-5xl sm:text-4xl text-3xl border-gray-300 outline-none bg-transparent font-[600] placeholder-gray-300 text-gray-800"/>
             </div>
+            
 
             <div className="flex items-center justify-center gap-2 mt-[10px]">
               <p className="flex items-center gap-2 text-[11px] text-gray-600 font-[500] bg-gray-100 px-[13px] py-1 rounded-full tracking-wide">
@@ -121,6 +139,8 @@ function Blog() {
               <Editorjs content={blog.content} />
             </div>
           </div>
+            {blog.authorId === userId && <EditBtns onClick={handleEditBlog} />}
+          
 
           {/* comment section */}
           <div className="m-10">
@@ -163,7 +183,8 @@ function Blog() {
               </ul>
             )}
           </div>
-
+          
+        
         {blog.authorId === userId && <DeleteBtns onClick={handleDeleteBlog} loading = {dloading}/>}
           
         </>

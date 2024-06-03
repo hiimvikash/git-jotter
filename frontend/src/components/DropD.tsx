@@ -30,6 +30,8 @@ const DropD: React.FC<DropdownProps> = ({ label, items }) => {
     localStorage.removeItem("jwt");
     localStorage.removeItem("editorTitle");
     localStorage.removeItem("editorData");
+    localStorage.removeItem("editTitle");
+    localStorage.removeItem("editContent");
     navigate("/");
   }
 

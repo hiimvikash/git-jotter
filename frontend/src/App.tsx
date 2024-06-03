@@ -6,6 +6,7 @@ import Create from './pages/Create'
 import NotFound from './pages/NotFound'
 import MyBlogs from './pages/MyBlogs'
 import JotterView from './pages/JotterView'
+import JotterEdit from './pages/JotterEdit'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/write" element={<Create />} />
           <Route path="/jotter/:id" element={<JotterView />} />
           <Route path="/myjotters" element={<MyBlogs />} />
+          <Route path="/jotter/:blogId/edit" element={<JotterEdit />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

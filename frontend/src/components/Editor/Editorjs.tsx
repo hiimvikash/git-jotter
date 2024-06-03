@@ -11,12 +11,21 @@ import CodeTool from '@editorjs/code';
 import ChangeCase from 'editorjs-change-case';
 import ToggleBlock from 'editorjs-toggle-block';
 import NestedList from '@editorjs/nested-list';
+import { useLocation } from 'react-router-dom';
 
 interface EditorProps {
   onChange: (data: OutputData) => void;
 }
 
 function Editorjs({ onChange }: EditorProps) {
+  const pathname = useLocation().pathname; // This will give you the last part of the URL "/jotter/41/edit"
+  const parts = pathname.split("/"); // ["", "jotter", "41", "edit"]
+  const lastPart = parts[parts.length - 1]; // "edit"
+
+
+
+
+
   const ejInstance = useRef<EditorJS | null>(null);
 
   const initEditor = useCallback(() => {
@@ -30,7 +39,9 @@ function Editorjs({ onChange }: EditorProps) {
       onReady: () => {
         ejInstance.current = editor;
       },
-      data: JSON.parse(localStorage.getItem('editorData') || '{}') || {},
+
+      data : (lastPart==="edit") ? JSON.parse(localStorage.getItem('editContent') || "{}") : JSON.parse(localStorage.getItem('editorData') || "{}"),
+      
       onChange: async () => {
         const editorData = await editor.saver.save();
         console.log(editorData);
