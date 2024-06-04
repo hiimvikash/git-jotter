@@ -97,7 +97,7 @@ function Blog() {
   function handleEditBlog(){
     localStorage.setItem("editContent", JSON.stringify(blog.content));
     localStorage.setItem("editTitle", blog.title);
-    navigate(`/jotter/${blog.id}/edit`);
+    navigate(`/jotter/${blog.id}/${blog.authorId}/edit`);
   }
 
   if(mounted){

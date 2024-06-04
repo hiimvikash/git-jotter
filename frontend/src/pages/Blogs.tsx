@@ -20,6 +20,7 @@ function Blogs() {
   localStorage.removeItem("editTitle");
   localStorage.removeItem("editContent");
   
+  
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [blogs, setBlogs] = useState<Blog[]>([]);

@@ -21,7 +21,7 @@ function App() {
           <Route path="/write" element={<Create />} />
           <Route path="/jotter/:id" element={<JotterView />} />
           <Route path="/myjotters" element={<MyBlogs />} />
-          <Route path="/jotter/:blogId/edit" element={<JotterEdit />} />
+          <Route path="/jotter/:blogId/:authorId/edit" element={<JotterEdit />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

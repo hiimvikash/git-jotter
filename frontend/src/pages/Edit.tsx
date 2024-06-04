@@ -6,7 +6,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import { useRecoilValue } from "recoil";
-import { verifiedAtom } from "../atom";
+import { userIdAtom, verifiedAtom } from "../atom";
 
 
 function Edit() {
@@ -14,6 +14,7 @@ function Edit() {
     const [title, setTitle] = useState("");
 
     const { blogId } = useParams();
+    const { authorId } = useParams();
 
     const handleEditorChange = (data:OutputData) => {
         setEditorData(data);
@@ -27,12 +28,17 @@ function Edit() {
     
     const navigate = useNavigate();
     const verified = useRecoilValue(verifiedAtom);
+    const userId = useRecoilValue(userIdAtom);
 
 
 
     useEffect(() => {
         if(!verified){
             navigate("/signin");
+        }
+        if(userId !== parseInt(authorId || "-1")){
+            alert("You're not authorized to edit this jotter");
+            navigate("/myjotters")
         }
         const savedData = localStorage.getItem('editContent') || "{}"; 
         const savedTitle = localStorage.getItem('editTitle') || "";
@@ -72,6 +78,8 @@ function Edit() {
         setLoading(false);
         localStorage.removeItem("editTitle");
         localStorage.removeItem("editContent");
+        
+        
 
         navigate(`/jotter/${response.data.id}`);
         } catch (error:any) {
