@@ -11,7 +11,7 @@ import CodeTool from '@editorjs/code';
 import ChangeCase from 'editorjs-change-case';
 import ToggleBlock from 'editorjs-toggle-block';
 import NestedList from '@editorjs/nested-list';
-import List from "@editorjs/list";
+
 import { useLocation } from 'react-router-dom';
 
 interface EditorProps {
@@ -65,7 +65,6 @@ function Editorjs({ onChange }: EditorProps) {
             defaultStyle: 'unordered'
           },
         },
-        liste: List,
         delimiter: Delimiter,
         alert: Alert,
         checklist: {
